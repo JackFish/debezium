@@ -45,9 +45,9 @@
             "enablecdctablesql": []
         },
         "sqlserver": {
-            "jdbcdriver": "com.microsoft.sqlserver",
-            "jar": "mssql-jdbc-8.2.0.jre8.jar",
-            "tpctable": "CREATE TABLE TPC.TEST ( USERNAME VARCHAR(32) NOT NULL, NAME VARCHAR(64), BLOOD_GROUP CHAR(3), RESIDENCE VARCHAR(200), COMPANY VARCHAR(128), ADDRESS VARCHAR(200), BIRTHDATE DATE, SEX CHAR(1), JOB VARCHAR(128), SSN CHAR(11), MAIL VARCHAR(128), ID INT IDENTITY(1,1) PRIMARY KEY, T0 TIMESTAMP DATETIME NULL DEFAULT GETDATE() )",
+            "jdbcdriver": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+            "jar": "mssql.jar",
+            "tpctable": "CREATE TABLE TEST ( USERNAME VARCHAR(32) NOT NULL, NAME VARCHAR(64), BLOOD_GROUP CHAR(3), RESIDENCE VARCHAR(200), COMPANY VARCHAR(128), ADDRESS VARCHAR(200), BIRTHDATE DATE, SEX CHAR(1), JOB VARCHAR(128), SSN CHAR(11), MAIL VARCHAR(128), ID INT IDENTITY(1,1) PRIMARY KEY, T0 DATETIME NULL DEFAULT GETDATE() )",
             "initsql": [],
             "enablecdctablesql": []
         },
@@ -62,6 +62,6 @@
         }
     },
     "sql": {
-        "insert": "INSERT INTO INVENTORY.TEST (USERNAME, NAME, BLOOD_GROUP ,RESIDENCE, COMPANY, ADDRESS, SEX) VALUES ( 'USERNAMEDAT', 'NAME', 'AB+', 'WELCOME TO EARTH', 'WORK TO WORK GMBH', 'HELP WORKING', 'M' )"
+        "insert": "INSERT INTO TEST (USERNAME, NAME, BLOOD_GROUP ,RESIDENCE, COMPANY, ADDRESS, SEX) VALUES ( 'USERNAMEDAT', 'NAME', 'AB+', 'WELCOME TO EARTH', 'WORK TO WORK GMBH', 'HELP WORKING', 'M' )"
     }
 }

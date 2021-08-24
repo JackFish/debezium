@@ -105,14 +105,17 @@ def topicexport(bootstrapserver, topicname, count, commitinterval):
 def getjdbcconnection(config, tpcconfig, connectiontype):
     global tpchomedir
     jdbctype = 'jdbc:' + connectiontype + '://'
+    url = ''
     if connectiontype == 'oracle':
         jdbctype = 'jdbc:oracle:thin:@'
-    conn = jaydebeapi.connect(tpcconfig['jdbc'][connectiontype]['jdbcdriver'], jdbctype +
-                              config['config']['database.hostname'] + ':' +
-                              config['config']['database.port'] + '/' +
-                              config['config']['database.dbname'],
+        url = jdbctype + config['config']['database.hostname'] + ':' + config['config']['database.port'] + '/' + config['config']['database.dbname']
+
+    if connectiontype == 'sqlserver':
+        url = 'jdbc:sqlserver://;serverName=' + config['config']['database.hostname'] + ';' + 'port=' + config['config']['database.port'] + ';' + 'databaseName=' + config['config']['database.dbname']
+    print('jdbc======'+tpcconfig['jdbc'][connectiontype]['jdbcdriver']+ url)
+    conn = jaydebeapi.connect(tpcconfig['jdbc'][connectiontype]['jdbcdriver'], url,
                               [config['config']['database.user'],
-                                  config['config']['database.password']],
+                              config['config']['database.password']],
                               tpchomedir + '/jdbcdriver/' + tpcconfig['jdbc'][connectiontype]['jar'])
     return conn
 
